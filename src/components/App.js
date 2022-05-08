@@ -59,9 +59,9 @@ function App() {
         />
         <Footer />
         <PopupWithForm
-          name={'edit-profile'}
-          title={'Редактировать профиль'}
-          buttonName={'Сохранить'}
+          name='edit-profile'
+          title='Редактировать профиль'
+          buttonName='Сохранить'
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           children={<InputsEditProfile />} //без явного выделения children и по синтаксису из комментария выпадает ошибка
