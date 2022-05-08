@@ -58,30 +58,34 @@ function App() {
           onCardClick={handleCardClick}
         />
         <Footer />
+
         <PopupWithForm
           name='edit-profile'
           title='Редактировать профиль'
           buttonName='Сохранить'
           isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          children={<InputsEditProfile />} //без явного выделения children и по синтаксису из комментария выпадает ошибка
-        />
+          onClose={closeAllPopups}>
+          <InputsEditProfile />
+        </PopupWithForm>
+
         <PopupWithForm
           name='add-card'
           title='Новое место'
           buttonName='Создать'
           isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          children={<InputsAddPlace />}
-        />
+          onClose={closeAllPopups}>
+          <InputsAddPlace />
+        </PopupWithForm>
+
         <PopupWithForm
           name='set-avatar'
           title='Обновить аватар'
           buttonName='Сохранить'
           isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          children={<InputEditAvatar />}
-        />
+          onClose={closeAllPopups}>
+          <InputEditAvatar />
+        </PopupWithForm>
+
         <ImagePopup
           onClose={closeAllPopups}
           isOpen={isImagePopupOpen}
