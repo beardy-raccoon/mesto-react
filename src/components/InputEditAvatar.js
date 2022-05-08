@@ -1,4 +1,4 @@
-export default function InputEditAvatar() {
+export default function InputsEditAvatar() {
   return (
     <>
       <input type="url" name="avatarlink" id="avatar-link" className="popup__input popup__input_avatar_link" required

@@ -1,4 +1,4 @@
-function InputEditProfile() {
+function InputsEditProfile() {
   return (
     <>
     <input type="text" name="name" id="name" className="popup__input popup__input_type_name" minLength="2"
@@ -11,4 +11,4 @@ function InputEditProfile() {
   );
 }
 
-export default InputEditProfile;
+export default InputsEditProfile;

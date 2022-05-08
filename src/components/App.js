@@ -1,12 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { api } from '../utils/api';
+import { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import InputEditProfile from './InputEditProfile';
+import InputsEditProfile from './InputsEditProfile';
 import InputsAddPlace from './InputsAddPlace';
 import InputEditAvatar from './InputEditAvatar';
 
@@ -17,37 +16,9 @@ function App() {
   let [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   let [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   let [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
-  let [userName, setUserName] = useState('');
-  let [userDescription, setUserDescription] = useState('');
-  let [userAvatar, setUserAvatar] = useState('');
-  let [cards, setCards] = useState([]);
-  let [selectedCard, setSelectedCard] = useState('')
+  let [selectedCard, setSelectedCard] = useState({})
 
-  useEffect(() => {
-    api.getProfile()
-      .then((profile) => {
-        setUserName(profile.name);
-        setUserDescription(profile.about);
-        setUserAvatar(profile.avatar);
-      })
-      .catch(console.log);
-  }, []);
 
-  useEffect(() => {
-    api.getInitialCards()
-      .then((initialCards) => {
-        const cardsList = initialCards.map((card) => {
-          return {
-            link: card.link,
-            name: card.name,
-            likes: card.likes,
-            id: card._id
-          }
-        })
-        setCards(cardsList);
-      })
-      .catch(console.log);
-  }, []);
 
 
   const handleEditAvatarClick = () => {
@@ -64,6 +35,7 @@ function App() {
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
+    console.log('card from handler', card);
     setIsImagePopupOpen(true);
   }
 
@@ -72,7 +44,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsImagePopupOpen(false);
-    setSelectedCard('');
+    setSelectedCard({});
   }
 
   return (
@@ -83,10 +55,6 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
-          userName={userName}
-          userDescription={userDescription}
-          userAvatar={userAvatar}
-          cards={cards}
           onCardClick={handleCardClick}
         />
         <Footer />
@@ -96,20 +64,20 @@ function App() {
           buttonName={'Сохранить'}
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          children={<InputEditProfile />}
+          children={<InputsEditProfile />} //без явного выделения children и по синтаксису из комментария выпадает ошибка
         />
         <PopupWithForm
-          name={'add-card'}
-          title={'Новое место'}
-          buttonName={'Создать'}
+          name='add-card'
+          title='Новое место'
+          buttonName='Создать'
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           children={<InputsAddPlace />}
         />
         <PopupWithForm
-          name={'set-avatar'}
-          title={'Обновить аватар'}
-          buttonName={'Сохранить'}
+          name='set-avatar'
+          title='Обновить аватар'
+          buttonName='Сохранить'
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           children={<InputEditAvatar />}

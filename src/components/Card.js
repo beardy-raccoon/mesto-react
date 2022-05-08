@@ -1,6 +1,6 @@
 function Card(props) {
 
-  const {link, name,likes} = props.card;
+  const {link, name, likes} = props.card;
   function handleClick() {
     props.onCardClick(props.card);
   }
@@ -8,7 +8,7 @@ function Card(props) {
     <>
     <li className="element">
       <button type="button" aria-label="Удалить" className="element__delete-button"></button>
-      <img className="element__image" src={`${link}`} alt="Название загруженного фото" onClick={handleClick} />
+      <img className="element__image" src={link} alt={name} onClick={handleClick} />
       <div className="element__wrap">
         <h2 className="element__image-name">{name}</h2>
         <div className="element__like-wrap">
