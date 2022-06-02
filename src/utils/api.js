@@ -65,7 +65,7 @@ class Api {
     .then(this._getResponse);
   }
 
-  setLike(id) {
+  /*setLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
@@ -79,7 +79,16 @@ class Api {
       headers: this._headers,
     })
     .then(this._getResponse);
-  }
+  }*/
+
+  changeLikeCardStatus(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+        method: isLiked ? 'DELETE' : 'PUT',
+        headers: this._headers
+    })
+        .then(this._getResponse);
+}
+
 }
 
 export const api = new Api({
