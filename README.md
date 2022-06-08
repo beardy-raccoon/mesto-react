@@ -14,9 +14,22 @@ Initial project set up
 Build main React components
 Connection to API
 
-- Initial cards load from server
+- Initial cards loads from server
 - User info loads from server
 - Modal windows opening realized via useState and useEffect hooks
+
+### stage 11 realized:
+
+Expanded app functional, now users able to:
+
+- Add and delete cards(which only belongs to user)
+- Open cards preview
+- Add like/dislike to card
+- Edit user info
+- Edit user avatar
+
+all changes saves and uploads from server via Fetch Api requests
+
 
 ### Технологии
 
