@@ -12,14 +12,14 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
 
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
 
   editProfile({ name, about }) {
@@ -31,7 +31,7 @@ class Api {
         about
       })
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
 
   editProfileAvatar({ avatarlink }) {
@@ -42,7 +42,7 @@ class Api {
         avatar: avatarlink
       })
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
 
   addCard(name, link) {
@@ -54,7 +54,7 @@ class Api {
         link
       })
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
 
   deleteCard(id) {
@@ -62,32 +62,16 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(this._getResponse);
+      .then(this._getResponse);
   }
-
-  /*setLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: 'PUT',
-      headers: this._headers,
-    })
-    .then(this._getResponse);
-  }
-
-  deleteLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: 'DELETE',
-      headers: this._headers,
-    })
-    .then(this._getResponse);
-  }*/
 
   changeLikeCardStatus(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-        method: isLiked ? 'DELETE' : 'PUT',
-        headers: this._headers
+      method: isLiked ? 'DELETE' : 'PUT',
+      headers: this._headers
     })
-        .then(this._getResponse);
-}
+      .then(this._getResponse);
+  }
 
 }
 
