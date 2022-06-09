@@ -66,7 +66,7 @@ export default function App() {
         closeAllPopups()
       })
       .catch(console.log);
-  }
+  };
 
   const handleUpdateAvatar = (avatar) => {
     api.editProfileAvatar({ avatarlink: avatar.avatar })
@@ -75,7 +75,7 @@ export default function App() {
         closeAllPopups();
       })
       .catch(console.log);
-  }
+  };
 
   const handleAddNewPlace = (newPlace) => {
     api.addCard(newPlace.name, newPlace.link)
@@ -84,7 +84,13 @@ export default function App() {
         closeAllPopups();
       })
       .catch(console.log);
-  }
+  };
+
+  const handleOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeAllPopups();
+    }
+  };
 
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
@@ -112,6 +118,16 @@ export default function App() {
       .catch(console.log);
   }, []);
 
+  useEffect(() => {
+    const handleCloseByEsc = (evt) => {
+      if (evt.key === "Escape") {
+        closeAllPopups();
+      }
+    };
+    document.addEventListener("keydown", handleCloseByEsc);
+    return () => document.removeEventListener("keydown", handleCloseByEsc);
+  }, []);
+
   return (
     <div className="App">
       <div className="page">
@@ -131,23 +147,26 @@ export default function App() {
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
-            onUpdateUser={handleUpdateUser} />
+            onUpdateUser={handleUpdateUser}
+            onOverlayClick={handleOverlayClick} />
 
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
-            onAddNewPlace={handleAddNewPlace} />
+            onAddNewPlace={handleAddNewPlace}
+            onOverlayClick={handleOverlayClick} />
 
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
-            onUpdateAvatar={handleUpdateAvatar} />
+            onUpdateAvatar={handleUpdateAvatar}
+            onOverlayClick={handleOverlayClick} />
 
           <ImagePopup
             card={selectedCard}
             isOpen={isImagePopupOpen}
             onClose={closeAllPopups}
-          />
+            onOverlayClick={handleOverlayClick} />
         </CurrentUserContext.Provider>
       </div>
     </div>

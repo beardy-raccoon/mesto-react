@@ -30,7 +30,8 @@ export default function AddPlacePopup(props) {
       buttonName='Создать'
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onOverlayClick={props.onOverlayClick} >
 
       <InputsAddPlace
         name={newPlace.name}

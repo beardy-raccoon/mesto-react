@@ -24,7 +24,8 @@ export default function EditAvatarPopup(props) {
       buttonName='Сохранить'
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onOverlayClick={props.onOverlayClick} >
 
       <InputEditAvatar
         avatarLinkRef={avatarLinkRef} />

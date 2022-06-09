@@ -34,7 +34,8 @@ export default function EditProfilePopup(props) {
       buttonName='Сохранить'
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onOverlayClick={props.onOverlayClick} >
 
       <InputsEditProfile
         name={userInfo.name}

@@ -1,7 +1,7 @@
-export default function PopupWithForm({ name, title, buttonName, isOpen, onClose, onSubmit, children }) {
+export default function PopupWithForm({ name, title, buttonName, isOpen, onClose, onSubmit, onOverlayClick, children }) {
 
   return (
-    <section className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
+    <section className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`} onClick={onOverlayClick}>
       <div className="popup__container">
         <form action="#" method="get" name={`${name}`} className="popup__form" noValidate onSubmit={onSubmit}>
           <h3 className="popup__title">{title}</h3>
