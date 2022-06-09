@@ -65,6 +65,7 @@ export default function App() {
         setCurrentUser(user);
         closeAllPopups()
       })
+      .catch(console.log);
   }
 
   const handleUpdateAvatar = (avatar) => {
@@ -143,9 +144,10 @@ export default function App() {
             onUpdateAvatar={handleUpdateAvatar} />
 
           <ImagePopup
-            onClose={closeAllPopups}
+            link={selectedCard.link}
+            name={selectedCard.name}
             isOpen={isImagePopupOpen}
-            card={selectedCard}
+            onClose={closeAllPopups}
           />
         </CurrentUserContext.Provider>
       </div>

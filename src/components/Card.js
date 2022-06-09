@@ -36,7 +36,6 @@ export default function Card(props) {
   }
 
   return (
-    <>
       <li className="element">
         <button type="button" aria-label="Удалить" className={cardDeleteButtonClassName} onClick={handleCardDelete}></button>
         <img className="element__image" src={link} alt={name} onClick={handleClick} />
@@ -48,6 +47,5 @@ export default function Card(props) {
           </div>
         </div>
       </li>
-    </>
   )
 }
