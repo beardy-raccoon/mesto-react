@@ -17,7 +17,7 @@ export default function Card(props) {
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   const isLiked = likes.some(i => i._id === currentUser._id);
 
-  // В зависимости от значения переменной красим или нет сердечко в `className` для кнопки лайка
+  // В зависимости от значения переменной красим или нет сердечко в 'className' для кнопки лайка
   const cardLikeButtonClassName = (
     `element__like-button ${isLiked ? 'element__like-button_active' : ''}`
   );

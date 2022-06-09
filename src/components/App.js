@@ -144,8 +144,7 @@ export default function App() {
             onUpdateAvatar={handleUpdateAvatar} />
 
           <ImagePopup
-            link={selectedCard.link}
-            name={selectedCard.name}
+            card={selectedCard}
             isOpen={isImagePopupOpen}
             onClose={closeAllPopups}
           />
