@@ -125,7 +125,9 @@ export default function App() {
       }
     };
     document.addEventListener("keydown", handleCloseByEsc);
-    return () => document.removeEventListener("keydown", handleCloseByEsc);
+    return () => {
+      document.removeEventListener("keydown", handleCloseByEsc);
+    }
   }, []);
 
   return (

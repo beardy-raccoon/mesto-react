@@ -2,7 +2,7 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import InputsAddPlace from "./InputsAddPlace";
 
-export default function AddPlacePopup(props) {
+export default function AddPlacePopup({isOpen, onClose, onAddNewPlace, onOverlayClick}) {
 
   const [newPlace, setNewPlace] = React.useState({ name: '', link: '' });
 
@@ -16,22 +16,22 @@ export default function AddPlacePopup(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.onAddNewPlace(newPlace);
+    onAddNewPlace(newPlace);
   }
 
   React.useEffect(() => {
     setNewPlace({ "name": '', "link": '' })
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   return (
     <PopupWithForm
       name='add-card'
       title='Новое место'
       buttonName='Создать'
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
       onSubmit={handleSubmit}
-      onOverlayClick={props.onOverlayClick} >
+      onOverlayClick={onOverlayClick} >
 
       <InputsAddPlace
         name={newPlace.name}
