@@ -27,7 +27,7 @@ export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardCl
 
       <section className="elements">
         <ul className="elements-list">
-          {cards.map((card) => (
+          {cards?.map((card) => (
             <Card
               card={card}
               onCardClick={onCardClick}
